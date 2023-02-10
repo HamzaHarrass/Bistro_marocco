@@ -3,6 +3,7 @@
 use App\Http\Controllers\PlatController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Plat;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
- route::post('/AjouterPlat', [PlatController::class, 'store'])->name('AjouterPlat');
- route::get('/Add',function(){
-        return view('plats.addPlat');
- })->name('addPlat');
+ route::resource('plats', PlatController::class);
 
 require __DIR__.'/auth.php';
 

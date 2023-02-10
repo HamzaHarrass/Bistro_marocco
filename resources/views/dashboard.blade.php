@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div  class=" overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <button  class="btn btn-primary btn-sm" ><a href="{{route('addPlat')}}">Add Plat</a></button>
+                    <button  class="btn btn-primary btn-sm" ><a href="{{route('plats.create')}}">Add Plat</a></button>
                     <table class="table">
                         <thead>
                             <tr>
@@ -26,8 +26,11 @@
                             <td>{{$item->description}}</td>
                             <td>{{$item->prix}}</td>
                             <td>
-                                <button class="btn btn-primary btn-sm" >Edit</button>
-                                <button class="btn btn-danger btn-sm" >Delete</button>
+                               <form action="{{route('plats.destroy', $item->id)}}" method="post">
+                                 @csrf
+                                 <a href="{{ route('plats.edit', $item->id)}}">EDIT</a>
+                                <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                            </form>
                           </tr>
 
                          @endforeach

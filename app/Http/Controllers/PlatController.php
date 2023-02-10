@@ -25,7 +25,7 @@ class PlatController extends Controller
      */
     public function create()
     {
-        //
+        return view('plats.addPlat');
     }
 
     /**
@@ -70,8 +70,9 @@ class PlatController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Plat $plat)
+
     {
-        //
+        return view('plats.editPlat', ['plat'=>$plat]);
     }
 
     /**
@@ -83,7 +84,7 @@ class PlatController extends Controller
      */
     public function update(Request $request, Plat $plat)
     {
-        //
+
     }
 
     /**
@@ -94,6 +95,6 @@ class PlatController extends Controller
      */
     public function destroy(Plat $plat)
     {
-        //
+         $plat->delete();
     }
 }
