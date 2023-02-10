@@ -9,6 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div  class=" overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+                    
                     <form class="d-flex flex-column  m-5 w-50 m-auto mt-" action="{{ route('plats.store')}}" method="post" enctype="multipart/form-data" >
                         @csrf
                         <h4 class="">ADD A Plat</h4>

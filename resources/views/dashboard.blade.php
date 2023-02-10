@@ -26,11 +26,15 @@
                             <td>{{$item->description}}</td>
                             <td>{{$item->prix}}</td>
                             <td>
-                               <form action="{{route('plats.destroy', $item->id)}}" method="post">
-                                 @csrf
-                                 <a href="{{ route('plats.edit', $item->id)}}">EDIT</a>
-                                <button class="btn btn-danger btn-sm" type="submit">Delete</button>
-                            </form>
+                                <button  type="submit"><a class="btn btn-primary btn-sm" href="{{ route('plats.show', $item->id)}}">SHOW</a></button>
+                                <button  type="submit"><a class="btn btn-success btn-sm" href="{{ route('plats.edit', $item->id)}}">EDIT</a></button>
+
+                               <form class="btn btn-danger btn-sm" action="{{route('plats.destroy', $item->id)}}" method="post">
+                                @csrf
+                                   @method('DELETE')
+                                <button  type="submit" >DELETE</button>
+                                </form>
+                            </td>
                           </tr>
 
                          @endforeach

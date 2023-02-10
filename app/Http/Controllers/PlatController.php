@@ -84,7 +84,19 @@ class PlatController extends Controller
      */
     public function update(Request $request, Plat $plat)
     {
-
+        $request->validate([
+            'title' => 'required|max:10',
+            'description' => 'required',
+            'prix' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $plat->title = $request->title;
+        $plat->description = $request->description;
+        $plat->prix = $request->prix;
+        $plat->image = $request->file('image')->store('public/images');
+        $plat->image = str_replace('public/', 'storage/', $plat->image);
+        $plat->save();
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -93,8 +105,10 @@ class PlatController extends Controller
      * @param  \App\Models\Plat  $plat
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Plat $plat)
+    public function destroy($id)
     {
-         $plat->delete();
+        $plat = plat::find($id);
+        $plat->delete();
+        return redirect()->route('dashboard');
     }
 }

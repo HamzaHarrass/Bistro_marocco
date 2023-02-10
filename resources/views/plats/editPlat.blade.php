@@ -9,8 +9,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div  class=" overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form class="d-flex flex-column  m-5 w-50 m-auto mt-" action="{{ route('plats.update', $plat->id)}}" method="post" enctype="multipart/form-data" >
+                    <form class="d-flex flex-column  m-5 w-50 m-auto mt-" action="{{ route('plats.update',$plat)}}" method="post" enctype="multipart/form-data" >
                         @csrf
+                        @method('PUT')
                         <h4 class="">EDIT A Plat</h4>
                             <input  class="my-3" type="text" name="title"  value="{{ $plat->title }}">
                             @error('title')
